@@ -1,5 +1,7 @@
 # WebShell
 
+![Screenshot](scr.jpg)
+
 ## ASP.NET Core 6 MVC
 
 Использованные материалы:\
