@@ -2,6 +2,8 @@
 
 ![Screenshot](scr.jpg)
 
+На сервере используется CMD
+
 ## ASP.NET Core 6 MVC
 
 Использованные материалы:\
