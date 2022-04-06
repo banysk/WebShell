@@ -1,0 +1,17 @@
+@import 'font.css';
+
+:root {
+    /* colors for text*/
+    --default-color: #DDD;
+    --success-color: #63de00;
+    --fail-color: #de473c;
+
+    /* colors for blocks*/
+    --header-color: #555;
+    --console-color: #000;
+    --bg-color: #7f5a83;
+    --bg-gradient: linear-gradient(0deg, #7f5a83 0%, #0d324d 74%);
+
+    /* fonts*/
+    --main-font: 'Fira Mono';
+}

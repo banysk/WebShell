@@ -1,0 +1,14 @@
+@keyframes appear {
+    from {
+        opacity: 0.0;
+    }
+  
+    to {
+        opacity : 1.0;
+    }
+}
+
+.console {
+    animation-duration: 2.5s;
+    animation-name: appear;
+}

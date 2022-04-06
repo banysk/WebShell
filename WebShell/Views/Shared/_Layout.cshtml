@@ -1,0 +1,14 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <title>WebShell</title>
+</head>
+
+<body onload="init()">
+    @RenderBody()
+
+    <script type="text/javascript" src="js/script.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

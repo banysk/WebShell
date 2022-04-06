@@ -1,0 +1,98 @@
+@import 'root.css';
+@import 'animation.css';
+
+/* body */
+body {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    background-image: var(--bg-gradient);
+}
+
+/* div console */
+.console {
+    width: 700px;
+    height: 500px;
+    box-sizing: border-box;
+    margin: auto;
+
+    font-family: var(--main-font);
+}
+
+.console header {
+    height: 45px;
+    line-height: 45px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    text-align: center;
+
+    color: var(--default-color);
+    background-color: var(--header-color);
+
+}
+
+.console .consolebody {
+    padding: 0px 20px 0px 20px;
+    height: calc(100% - 40px);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    color: var(--default-color);
+    background-color: var(--console-color);
+}
+
+/* custom p */
+.console .consolebody p {
+    line-height: 1.5rem;
+    margin: 5px;
+}
+
+.info, .res, #get {
+    color: var(--default-color);
+}
+
+#get::before, .info::before {
+    content: '> ';
+}
+
+
+/* scroll */
+.scroll::-webkit-scrollbar {
+    width: 3px;
+}
+.scroll::-webkit-scrollbar-track {
+    background-color: transparent;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.scroll::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: var(--default-color);
+}
+
+/* input */
+#command {
+    background-color: transparent;
+    line-height: 1.5rem;
+    box-shadow: none;
+    border: none;
+    width: calc(100% - 25px);
+    word-break: break-word;
+    resize: none;
+    font-size: 1em;
+    padding: 0;
+    font-family: var(--main-font);
+    color: var(--default-color);
+}
+
+#command:focus {
+    outline: none;
+}
