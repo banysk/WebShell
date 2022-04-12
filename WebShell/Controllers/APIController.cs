@@ -5,11 +5,11 @@ using WebShell.Models;
 
 namespace WebShell.Controllers
 {
-    public class APIController : Controller
+    public class ApiController : Controller
     {
         private readonly ApplicationDbContext _db;
 
-        public APIController(ApplicationDbContext db)
+        public ApiController(ApplicationDbContext db)
         {
             _db = db;
         }
@@ -24,11 +24,11 @@ namespace WebShell.Controllers
         [HttpPost]
         async public Task<string> ExecuteCommand([FromBody] string content)
         {
-            CommandModel Command = new CommandModel { Source = content};
-            Command.Execute();
-            _db.Commands.Add(Command);
+            CommandModel command = new CommandModel { Source = content };
+            command.Execute();
+            _db.Commands.Add(command);
             await _db.SaveChangesAsync();
-            return Command.Result;
+            return command.Result;
         }
     }
 }

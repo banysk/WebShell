@@ -2,6 +2,7 @@ let command = document.getElementById("command");
 let to_place = document.getElementById("get");
 let history = new Array();
 let current;
+let isActive = false;
 
 async function init() {
     await getCommands();
@@ -9,13 +10,19 @@ async function init() {
     document.body.addEventListener("keyup", function(event) {
         switch (event.code) {
             case "Enter":
-                add();
+                if (!isActive) {
+                    add();
+                }
                 break;
             case "ArrowDown":
-                down();
+                if (!isActive) {
+                    down();
+                }
                 break;
             case "ArrowUp":
-                up();
+                if (!isActive) {
+                    up();
+                }
                 break;
         }
     });
@@ -58,7 +65,7 @@ function down() {
 }
 
 async function getCommands() {
-    const response = await fetch('http://localhost:58080/API/GetCommands', {
+    const response = await fetch('Api/GetCommands', {
         method: 'GET'
     });
     response.json().then(data => {
@@ -68,7 +75,8 @@ async function getCommands() {
 }
 
 async function executeCommand() {
-    const response = await fetch('http://localhost:58080/API/ExecuteCommand', {
+    isActive = true;
+    const response = await fetch('Api/ExecuteCommand', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -76,5 +84,6 @@ async function executeCommand() {
         },
         body: JSON.stringify(command.value)
     });
+    isActive = false;
     return response;
 }

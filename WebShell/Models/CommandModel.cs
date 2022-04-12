@@ -27,24 +27,31 @@ namespace WebShell.Models
             cmd.StandardInput.WriteLine(Source);
             cmd.StandardInput.Flush();
             cmd.StandardInput.Close();
-            cmd.WaitForExit();
-            
-            var Error = cmd.StandardError.ReadToEnd();
-            if (Error.Length != 0)
+            var exited = cmd.WaitForExit(5000);
+
+            if (!exited)
             {
-                Result = Error;
+                Result = "Time is over";
+                return;
+            }
+            
+
+            var error = cmd.StandardError.ReadToEnd();
+            if (error.Length != 0)
+            {
+                Result = error;
             }
             else
             {
-                List<string> Output = new List<string>();
-                string Buf;
+                List<string> output = new List<string>();
+                string buf;
 
-                while ((Buf = cmd.StandardOutput.ReadLine()) != null)
+                while ((buf = cmd.StandardOutput.ReadLine()) != null)
                 {
-                    Output.Add(Buf);
+                    output.Add(buf);
                 }
 
-                Result = String.Join(" ", Output.GetRange(4, Output.Count - 5));
+                Result = String.Join(" ", output.GetRange(4, output.Count - 5));
             }
         }
     }
